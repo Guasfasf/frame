@@ -65,8 +65,7 @@ export default {
     },
     initUrl: {
       // 初始图片链接
-      default: 'https://www.yuanzhouipsp.com/images/Wavatar.png'
-      // default: 'http://39.97.237.203:8088/images/Wavatar.png'
+      default: 'http://a1.att.hudong.com/05/00/01300000194285122188000535877.jpg'
     },
     fixedNumber: {
       // 剪裁框比例设置
