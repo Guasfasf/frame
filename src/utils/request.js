@@ -5,7 +5,7 @@ import { getToken } from '@/utils/auth' // 为了用户信息 token
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: window.YZEnv.serverBaseUrl
+  baseURL: window.GEnv.serverBaseUrl
 })
 // request拦截器
 service.interceptors.request.use(

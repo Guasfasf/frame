@@ -39,17 +39,17 @@
       </Cropper>
     </el-dialog>
 
-    <!-- 自定义弹窗 YZdialog-->
-    <YZdialog :dialogVisible="dialogVisibleG" @closeDiaLog="closeDiaLog" :dialogType="dialogType">
+    <!-- 自定义弹窗 Gdialog-->
+    <Gdialog :dialogVisible="dialogVisibleG" @closeDiaLog="closeDiaLog" :dialogType="dialogType">
       <div slot="slotDiaLogBody">
         {{dialogMessage}}
       </div>
-    </YZdialog>
+    </Gdialog>
   </div>
 </template>
 <script>
 import Cropper from './cropper'
-import YZdialog from '@/components/YZdialog/YZdialog'
+import Gdialog from '@/components/Gdialog/Gdialog'
 export default {
   name: 'uploader',
   props: {
@@ -266,7 +266,7 @@ export default {
   },
   components: {
     Cropper,
-    YZdialog
+    Gdialog
   }
 }
 </script>

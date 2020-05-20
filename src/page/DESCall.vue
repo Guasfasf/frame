@@ -38,12 +38,12 @@ export default {
     encryptDES () {
       let str = this.texts
       let key = this.keys
-      this.encryptionText = this.$YZmethods.encryptDES(str, key)
+      this.encryptionText = this.$Gmethods.encryptDES(str, key)
     },
     decryptDES () {
       let key = this.keys
       let str = this.encryptionText
-      this.DecryptText = this.$YZmethods.decryptDES(str, key)
+      this.DecryptText = this.$Gmethods.decryptDES(str, key)
     }
   }
 }

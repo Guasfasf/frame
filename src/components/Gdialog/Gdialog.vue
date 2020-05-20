@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'YZdialog',
+  name: 'Gdialog',
   props: {
     dialogVisible: { // 是否显示弹窗
       default: false,

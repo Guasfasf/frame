@@ -39,12 +39,12 @@ export default {
     encryption () {
       let key = this.keys
       let str = this.texts
-      this.encryptionText = this.$YZmethods.encryption(key, str)
+      this.encryptionText = this.$Gmethods.encryption(key, str)
     },
     Decrypt () {
       let data = this.encryptionText
       let key2 = this.decryptkeys
-      this.DecryptText = this.$YZmethods.Decrypt(key2, data)
+      this.DecryptText = this.$Gmethods.Decrypt(key2, data)
     }
   }
 }

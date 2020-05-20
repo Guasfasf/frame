@@ -2,12 +2,12 @@
   <div>
     <button @click="dialogTrue('success')">点击显示成功弹窗</button>
     <button @click="dialogTrue('error')">点击显示失败弹窗</button>
-    <YZdialog :dialogVisible="dialogVisible" dialogType="success" @closeDiaLog="closeDiaLog">
+    <Gdialog :dialogVisible="dialogVisible" dialogType="success" @closeDiaLog="closeDiaLog">
       <template slot="slotDiaLogBody">
         上传成功，添加成功，删除成功
       </template>
-    </YZdialog>
-    <YZdialog :dialogVisible="dialogVisibleError" dialogType="error" @closeXDialog="closeXDialog">
+    </Gdialog>
+    <Gdialog :dialogVisible="dialogVisibleError" dialogType="error" @closeXDialog="closeXDialog">
       <template slot="slotDiaLogBody">
         <div>
           <p>失败原因</p>
@@ -15,12 +15,12 @@
           <p>失败原因</p>
         </div>
       </template>
-    </YZdialog>
+    </Gdialog>
   </div>
 </template>
 
 <script>
-import YZdialog from '../components/YZdialog/YZdialog'
+import Gdialog from '../components/Gdialog/Gdialog'
 export default {
   data () {
     return {
@@ -29,7 +29,7 @@ export default {
     }
   },
   components: {
-    YZdialog
+    Gdialog
   },
   methods: {
     dialogTrue (item) {

@@ -10,8 +10,8 @@ import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import store from './store'
 import bus from '../src/assets/js/eventBus'
 
-import YZmethods from './YZmethods'
-Vue.prototype.$YZmethods = YZmethods
+import Gmethods from './Gmethods'
+Vue.prototype.$Gmethods = Gmethods
 
 Vue.use(bus)
 Vue.use(ElementUI, { locale: zhLocale })
