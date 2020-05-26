@@ -53,6 +53,18 @@ export default {
           name: 'API',
           path: '/apiCall',
           url: `../assets/logo.png`
+        },
+        {
+          id: 8,
+          name: '落球',
+          path: '/ballDrop',
+          url: `../assets/logo.png`
+        },
+        {
+          id: 9,
+          name: '兄弟',
+          path: '/brother',
+          url: `../assets/logo.png`
         }
       ]
     }

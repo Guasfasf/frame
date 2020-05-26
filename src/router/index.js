@@ -8,6 +8,8 @@ import ScanningCall from '../page/ScanningCall'
 import RSACall from '../page/RSACall'
 import DESCall from '../page/DESCall'
 import apiCall from '../page/apiCall'
+import ballDrop from '../page/ballDrop'
+import brother from '../page/brother'
 
 Vue.use(Router)
 
@@ -52,6 +54,16 @@ export default new Router({
           path: '/apiCall',
           name: 'apiCall',
           component: apiCall
+        },
+        {
+          path: '/ballDrop',
+          name: 'ballDrop',
+          component: ballDrop
+        },
+        {
+          path: '/brother',
+          name: 'brother',
+          component: brother
         }
       ]
     }
