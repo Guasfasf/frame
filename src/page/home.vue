@@ -65,6 +65,12 @@ export default {
           name: '兄弟',
           path: '/brother',
           url: `../assets/logo.png`
+        },
+        {
+          id: 10,
+          name: '富文本',
+          path: '/tinymce',
+          url: `../assets/logo.png`
         }
       ]
     }

@@ -10,6 +10,7 @@ import DESCall from '../page/DESCall'
 import apiCall from '../page/apiCall'
 import ballDrop from '../page/ballDrop'
 import brother from '../page/brother'
+import tinymce from '../page/tinymce'
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
           path: '/brother',
           name: 'brother',
           component: brother
+        },
+        {
+          path: '/tinymce',
+          name: 'tinymce',
+          component: tinymce
         }
       ]
     }
