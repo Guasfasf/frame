@@ -10,6 +10,7 @@ export default {
   name: 'apiCall',
   methods: {
     login () {
+      // this.$store
       let params = {}
       login(params).then(res => {
         console.log(res)

@@ -38,38 +38,56 @@ export default {
         },
         {
           id: 5,
+          name: 'AES',
+          path: '/AES',
+          url: `../assets/logo.png`
+        },
+        {
+          id: 6,
           name: 'RSA',
           path: '/RSACall',
           url: `../assets/logo.png`
         },
         {
-          id: 6,
+          id: 7,
           name: 'DES',
           path: '/DESCall',
           url: `../assets/logo.png`
         },
         {
-          id: 7,
+          id: 8,
           name: 'API',
           path: '/apiCall',
           url: `../assets/logo.png`
         },
         {
-          id: 8,
+          id: 9,
           name: '落球',
           path: '/ballDrop',
           url: `../assets/logo.png`
         },
         {
-          id: 9,
-          name: '兄弟',
+          id: 10,
+          name: '传值',
           path: '/brother',
           url: `../assets/logo.png`
         },
         {
-          id: 10,
+          id: 11,
           name: '富文本',
           path: '/tinymce',
+          url: `../assets/logo.png`
+        },
+        {
+          id: 12,
+          name: '图表',
+          path: '/echarts',
+          url: `../assets/logo.png`
+        },
+        {
+          id: 13,
+          name: 'SVG',
+          path: '/SVG',
           url: `../assets/logo.png`
         }
       ]

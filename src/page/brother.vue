@@ -10,6 +10,16 @@ import brother from '../components/brother'
 import younger from '../components/younger'
 export default {
   name: 'brothers',
+  data () {
+    return {
+      test: 'glf'
+    }
+  },
+  provide () {
+    return {
+      father: this
+    }
+  },
   components: {
     brother,
     younger

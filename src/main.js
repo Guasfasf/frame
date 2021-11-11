@@ -8,9 +8,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import store from './store'
 import bus from '../src/assets/js/eventBus'
-
 import Gmethods from './Gmethods'
 Vue.prototype.$Gmethods = Gmethods
+var echarts = require('echarts')
+Vue.prototype.$echarts = echarts
 
 Vue.use(bus)
 Vue.use(ElementUI, { locale: zhLocale })

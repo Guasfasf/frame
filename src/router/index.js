@@ -5,12 +5,15 @@ import dialogCall from '../page/dialogCall'
 import pictureCall from '../page/pictureCall'
 import cameraCall from '../page/cameraCall'
 import ScanningCall from '../page/ScanningCall'
+import AES from '../page/AES'
 import RSACall from '../page/RSACall'
 import DESCall from '../page/DESCall'
 import apiCall from '../page/apiCall'
 import ballDrop from '../page/ballDrop'
 import brother from '../page/brother'
 import tinymce from '../page/tinymce'
+import echarts from '../page/echarts'
+import svgMap from '../page/SVG/svgMap'
 
 Vue.use(Router)
 
@@ -42,6 +45,11 @@ export default new Router({
           component: ScanningCall
         },
         {
+          path: '/AES',
+          name: 'AES',
+          component: AES
+        },
+        {
           path: '/RSACall',
           name: 'RSACall',
           component: RSACall
@@ -70,6 +78,16 @@ export default new Router({
           path: '/tinymce',
           name: 'tinymce',
           component: tinymce
+        },
+        {
+          path: '/echarts',
+          name: 'echarts',
+          component: echarts
+        },
+        {
+          path: '/SVG',
+          name: 'SVG',
+          component: svgMap
         }
       ]
     }

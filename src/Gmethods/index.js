@@ -3,6 +3,28 @@ import JsEncrypt from 'jsencrypt'
 import CryptoJS from 'crypto-js'
 
 export default {
+  // AES 加密
+  encryptAES (word, key) {
+    if (key) {
+      return CryptoJS.AES.encrypt(word, key, {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+      }).toString()
+    } else {
+      throw new Error('加密未传入密匙')
+    }
+  },
+  // AES 解密
+  decryptAES (word, key) {
+    if (key) {
+      return CryptoJS.AES.decrypt(word, key, {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+      }).toString(CryptoJS.enc.Utf8)
+    } else {
+      throw new Error('解密未传入密匙!')
+    }
+  },
   /* RSA 加密 内部处理了base64加密
   * key 加密时使用的公钥
   * str 将要被加密的数据
