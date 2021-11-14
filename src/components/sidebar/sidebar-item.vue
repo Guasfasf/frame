@@ -18,7 +18,6 @@
           <el-menu-item
             v-else
             :index="child[pathKey],cindex"
-            @click="open(child)"
             :key="child[labelKey]">
             <i class="el-icon-menu"></i>
             <span slot="title">{{ child.name }}</span>
@@ -53,11 +52,6 @@ export default {
         icon: 'icon',
         children: 'children'
       }
-    }
-  },
-  methods: {
-    open (item) {
-      console.log(item);
     }
   },
   computed: {

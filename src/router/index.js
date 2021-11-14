@@ -14,6 +14,8 @@ import brother from '../page/brother'
 import tinymce from '../page/tinymce'
 import echarts from '../page/echarts'
 import svgMap from '../page/SVG/svgMap'
+import tableScroll from '../page/tableScroll'
+import listScroll from '../page/listScroll'
 
 Vue.use(Router)
 
@@ -88,6 +90,16 @@ export default new Router({
           path: '/SVG',
           name: 'SVG',
           component: svgMap
+        },
+        {
+          path: '/listScroll',
+          name: 'listScroll',
+          component: listScroll
+        },
+        {
+          path: '/tableScroll',
+          name: 'tableScroll',
+          component: tableScroll
         }
       ]
     }

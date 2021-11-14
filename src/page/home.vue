@@ -65,35 +65,44 @@ export default {
           ]
         },
         {
-          id: 8,
           name: 'API',
           path: '/apiCall',
           url: `../assets/logo.png`
         },
         {
-          id: 9,
           name: '落球',
           path: '/ballDrop',
           url: `../assets/logo.png`
         },
         {
-          id: 10,
           name: '传值',
           path: '/brother',
           url: `../assets/logo.png`
         },
 
         {
-          id: 12,
           name: '图表',
           path: '/echarts',
           url: `../assets/logo.png`
         },
         {
-          id: 13,
           name: 'SVG',
           path: '/SVG',
           url: `../assets/logo.png`
+        },
+        {
+          name: '自动滚动',
+          path: '自动滚动',
+          children: [
+            {
+              name: '表格',
+              path: '/tableScroll'
+            },
+            {
+              name: '列表滚动',
+              path: '/listScroll'
+            }
+          ]
         }
       ]
     }
