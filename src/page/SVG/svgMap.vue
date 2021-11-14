@@ -86,6 +86,6 @@ export default {
   }
   #s1{position: absolute;
     top:0;
-    left:0;
+    left:200;
   }
 </style>

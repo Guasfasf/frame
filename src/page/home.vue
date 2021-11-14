@@ -13,46 +13,56 @@ export default {
     return {
       menus: [
         {
-          id: 1,
-          name: '弹窗',
-          path: '/dialogCall',
-          url: `../assets/logo.png`
+          name: '插件',
+          path: '插件',
+          children: [
+            {
+              name: '弹窗',
+              path: '/dialogCall',
+              url: `../assets/logo.png`
+            },
+            {
+              name: '传图',
+              path: '/pictureCall',
+              url: `../assets/logo.png`
+            },
+            {
+              name: '摄像',
+              path: '/cameraCall',
+              url: `../assets/logo.png`
+            },
+            {
+              name: '扫码',
+              path: '/ScanningCall',
+              url: `../assets/logo.png`
+            },
+            {
+              name: '富文本',
+              path: '/tinymce',
+              url: `../assets/logo.png`
+            }
+          ]
         },
         {
-          id: 2,
-          name: '传图',
-          path: '/pictureCall',
-          url: `../assets/logo.png`
-        },
-        {
-          id: 3,
-          name: '摄像',
-          path: '/cameraCall',
-          url: `../assets/logo.png`
-        },
-        {
-          id: 4,
-          name: '扫码',
-          path: '/ScanningCall',
-          url: `../assets/logo.png`
-        },
-        {
-          id: 5,
-          name: 'AES',
-          path: '/AES',
-          url: `../assets/logo.png`
-        },
-        {
-          id: 6,
-          name: 'RSA',
-          path: '/RSACall',
-          url: `../assets/logo.png`
-        },
-        {
-          id: 7,
-          name: 'DES',
-          path: '/DESCall',
-          url: `../assets/logo.png`
+          name: '加解密',
+          path: '加解密',
+          children: [
+            {
+              name: 'AES',
+              path: '/AES',
+              url: `../assets/logo.png`
+            },
+            {
+              name: 'RSA',
+              path: '/RSACall',
+              url: `../assets/logo.png`
+            },
+            {
+              name: 'DES',
+              path: '/DESCall',
+              url: `../assets/logo.png`
+            }
+          ]
         },
         {
           id: 8,
@@ -72,12 +82,7 @@ export default {
           path: '/brother',
           url: `../assets/logo.png`
         },
-        {
-          id: 11,
-          name: '富文本',
-          path: '/tinymce',
-          url: `../assets/logo.png`
-        },
+
         {
           id: 12,
           name: '图表',
