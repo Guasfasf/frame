@@ -9,10 +9,13 @@ import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import store from './store'
 import bus from '../src/assets/js/eventBus'
 import Gmethods from './Gmethods'
+import uploader from 'vue-simple-uploader' // 断点续传
+
 Vue.prototype.$Gmethods = Gmethods
 var echarts = require('echarts')
 Vue.prototype.$echarts = echarts
 
+Vue.use(uploader)
 Vue.use(bus)
 Vue.use(ElementUI, { locale: zhLocale })
 /* eslint-disable no-new */

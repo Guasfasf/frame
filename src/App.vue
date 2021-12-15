@@ -2,12 +2,17 @@
 <template>
   <div id="app">
     <router-view/>
+    <global-uploader></global-uploader>
   </div>
 </template>
 
 <script>
+import globalUploader from '@/components/uploader/GlobalUploader.vue'
 export default {
   name: 'App',
+  components: {
+    globalUploader
+  },
   /* 监听30分钟无操作状态时间 */
   mounted () {
     // window.onload = function () {

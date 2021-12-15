@@ -22,7 +22,7 @@ export default {
               url: `../assets/logo.png`
             },
             {
-              name: '传图',
+              name: '上传',
               path: '/pictureCall',
               url: `../assets/logo.png`
             },

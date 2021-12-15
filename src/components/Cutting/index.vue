@@ -65,7 +65,7 @@ export default {
     },
     initUrl: {
       // 初始图片链接
-      default: 'http://a1.att.hudong.com/05/00/01300000194285122188000535877.jpg'
+      // default: 'http://a1.att.hudong.com/05/00/01300000194285122188000535877.jpg'
     },
     fixedNumber: {
       // 剪裁框比例设置
