@@ -16,6 +16,7 @@ import echarts from '../page/echarts'
 import svgMap from '../page/SVG/svgMap'
 import tableScroll from '../page/tableScroll'
 import listScroll from '../page/listScroll'
+import print from '../page/print'
 
 Vue.use(Router)
 
@@ -100,6 +101,11 @@ export default new Router({
           path: '/tableScroll',
           name: 'tableScroll',
           component: tableScroll
+        },
+        {
+          path: '/print',
+          name: 'print',
+          component: print
         }
       ]
     }
