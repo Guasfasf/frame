@@ -1,7 +1,6 @@
-# npm i jsencrypt crypto-js element-ui echarts vuex axios js-cookie vue-cropper
-# npm i less less-leader -dev
+# npm i 安装依赖
 
-# 集中配置文件流程介绍
+# 集中配置文件 - env
 1. static静态资源文件中新建env.js文件
 2. index.html中引入此文件
 3. env.js中规定全局属性名
@@ -30,3 +29,6 @@
 > print
 1. 创建打印页面，并通过ref确定打印区域，通过class避开不打印区域
 > End 2021.12.20
+1. input和label配合使用，实现tab切换效果
+> 伪类Tab
+> End 2021.12.21

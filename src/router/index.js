@@ -17,6 +17,7 @@ import svgMap from '../page/SVG/svgMap'
 import tableScroll from '../page/tableScroll'
 import listScroll from '../page/listScroll'
 import print from '../page/print'
+import tabWl from '../page/tabWl'
 
 Vue.use(Router)
 
@@ -106,6 +107,11 @@ export default new Router({
           path: '/print',
           name: 'print',
           component: print
+        },
+        {
+          path: '/tabWl',
+          name: 'tabWl',
+          component: tabWl
         }
       ]
     }

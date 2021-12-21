@@ -108,6 +108,11 @@ export default {
               path: '/listScroll'
             }
           ]
+        },
+        {
+          name: '伪类tab',
+          path: '/tabWl',
+          url: `../assets/logo.png`
         }
       ]
     }

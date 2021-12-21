@@ -6,10 +6,14 @@
     <div v-if="imgSrc" class="img_bg_camera">
       <img :src="imgSrc" alt="" class="tx_img">
     </div>
+    <div v-if="imgList && imgList.length > 0">
+      <img v-for="(item, index) in imgList" :key="index" :src="item" alt="" class="tx_img">
+    </div>
     <button @click="getCompetence()">打开摄像头</button>
     <button @click="stopNavigator()">关闭摄像头</button>
     <button @click="setImage()">拍照</button>
-    <button @click="setImgSrc()">返回</button>
+    <button @click="timeSetImage()">定时拍照</button>
+    <button @click="delImgSrc()">返回</button>
   </div>
 </template>
 <script>
@@ -19,9 +23,11 @@ export default {
       videoWidth: 300,
       videoHeight: 200,
       imgSrc: '',
+      timerImage: '',
       thisCancas: null,
       thisContext: null,
-      thisVideo: null
+      thisVideo: null,
+      imgList: []
     }
   },
   methods: {
@@ -69,15 +75,32 @@ export default {
         console.log('err ==', err)
       })
     },
+    // 验证
+    proving () {
+      if (!this.thisContext) {
+        alert('先去开启摄像头')
+        return true
+      }
+    },
     // 绘制图片（拍照功能）
     setImage () {
+      if (this.proving()) return
       var _this = this
       // 点击，canvas画图
       _this.thisContext.drawImage(_this.thisVideo, 0, 0, _this.videoWidth, _this.videoHeight)
       // 获取图片base64链接
       var image = this.thisCancas.toDataURL('image/png')
       _this.imgSrc = image
+      this.imgList.push(image)
       this.$emit('refreshDataList', this.imgSrc)
+    },
+    // 定时拍照
+    timeSetImage () {
+      this.delImgSrc()
+      if (this.proving()) return
+      this.timerImage = setInterval(() => {
+        this.setImage()
+      }, 20000)
     },
     // base64转文件
     dataURLtoFile (dataurl, filename) {
@@ -94,9 +117,12 @@ export default {
     // 关闭摄像头
     stopNavigator () {
       this.thisVideo.srcObject.getTracks()[0].stop()
+      this.delImgSrc()
     },
     // 删除图片，返回摄像
-    setImgSrc () {
+    delImgSrc () {
+      clearInterval(this.timerImage)
+      this.imgList = []
       this.imgSrc = ''
     }
   }
@@ -116,11 +142,11 @@ export default {
       transform:scaleX(-1);
     }
     .img_bg_camera{
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 0;
+      //position: absolute;
+      //bottom: 0;
+      //left: 0;
+      //right: 0;
+      //top: 0;
       width:300px;
       height:200px;
     }
