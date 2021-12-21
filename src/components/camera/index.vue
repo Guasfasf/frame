@@ -13,29 +13,56 @@
     <button @click="stopNavigator()">关闭摄像头</button>
     <button @click="setImage()">拍照</button>
     <button @click="timeSetImage()">定时拍照</button>
+    <button @click="sjTimeImage()">1-5随机拍照</button>
     <button @click="delImgSrc()">返回</button>
   </div>
 </template>
 <script>
 export default {
+  props: {
+    // 照片宽度
+    videoWidth: {
+      type: [Number, String],
+      default: 300
+    },
+    // 照片高度
+    videoHeight: {
+      type: [Number, String],
+      default: 200
+    },
+    // 定时时间 随机时间会直接覆盖
+    time: {
+      type: [Number, String],
+      default: 1000
+    },
+    // 随机最小区间
+    minNum: {
+      type: [Number, String],
+      default: 1000
+    },
+    // 随机最大区间
+    maxNum: {
+      type: [Number, String],
+      default: 5000
+    }
+  },
   data () {
     return {
-      videoWidth: 300,
-      videoHeight: 200,
       imgSrc: '',
       timerImage: '',
-      thisCancas: null,
+      thisCanvas: null,
       thisContext: null,
       thisVideo: null,
-      imgList: []
+      imgList: [],
+      times: this.time
     }
   },
   methods: {
     // 调用权限（打开摄像头功能）
     getCompetence () {
       var _this = this
-      this.thisCancas = document.getElementById('canvasCamera')
-      this.thisContext = this.thisCancas.getContext('2d')
+      this.thisCanvas = document.getElementById('canvasCamera')
+      this.thisContext = this.thisCanvas.getContext('2d')
       this.thisVideo = document.getElementById('videoCamera')
       // 旧版本浏览器可能根本不支持mediaDevices，我们首先设置一个空对象
       if (navigator.mediaDevices === undefined) {
@@ -89,7 +116,7 @@ export default {
       // 点击，canvas画图
       _this.thisContext.drawImage(_this.thisVideo, 0, 0, _this.videoWidth, _this.videoHeight)
       // 获取图片base64链接
-      var image = this.thisCancas.toDataURL('image/png')
+      var image = this.thisCanvas.toDataURL('image/png')
       _this.imgSrc = image
       this.imgList.push(image)
       this.$emit('refreshDataList', this.imgSrc)
@@ -100,7 +127,21 @@ export default {
       if (this.proving()) return
       this.timerImage = setInterval(() => {
         this.setImage()
-      }, 20000)
+      }, this.times)
+    },
+    // 随机拍照
+    sjTimeImage () {
+      if (this.proving()) return
+      clearInterval(this.timerImage)
+      this.timerImage = setInterval(() => {
+        this.setImage()
+        this.times = this.getRndInteger(this.minNum, this.maxNum)
+        this.sjTimeImage()
+      }, this.times)
+    },
+    // 随机取值
+    getRndInteger (min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min
     },
     // base64转文件
     dataURLtoFile (dataurl, filename) {
