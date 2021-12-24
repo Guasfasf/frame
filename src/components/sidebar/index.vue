@@ -7,6 +7,10 @@
       <sidebar-item :menus="menus"></sidebar-item>
     </el-menu>
     <el-main class="main">
+      <div v-if="$route.path === '/'" style="height: 100%;overflow: auto;">
+        <h1>hello word</h1>
+        <div style="height: 1000px;background: #1ACEFF;"></div>
+      </div>
       <router-view style="height: 100%;overflow: auto;"></router-view>
     </el-main>
   </el-container>

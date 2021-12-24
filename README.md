@@ -32,7 +32,7 @@
 1. input和label配合使用，实现tab切换效果
 > 伪类Tab
 > End 2021.12.21
-1. express body-parser express-session
-> node serve
+1. nodeServe：express、body-parser、express-session
+2. 返回顶部backTop，提示语
 > End 2021.12.24
 

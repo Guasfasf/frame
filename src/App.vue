@@ -3,15 +3,29 @@
   <div id="app">
     <router-view/>
     <global-uploader></global-uploader>
+    <back-to-top
+      :customStyle="myBackToTopStyle"
+      :visibilityHeight="300">
+    </back-to-top>
   </div>
 </template>
 
 <script>
 import globalUploader from '@/components/uploader/GlobalUploader.vue'
+import BackToTop from '@/components/backTop/backTop'
 export default {
   name: 'App',
+  data () {
+    return {
+      myBackToTopStyle: {
+        'right': '100px',
+        'bottom': '50px'
+      }
+    }
+  },
   components: {
-    globalUploader
+    globalUploader,
+    BackToTop
   },
   /* 监听30分钟无操作状态时间 */
   mounted () {

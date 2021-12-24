@@ -11,7 +11,9 @@ import bus from '../src/assets/js/eventBus'
 import Gmethods from './Gmethods'
 import uploader from 'vue-simple-uploader' // 断点续传
 import Print from '@/utils/print'
+import message from '@/components/Gdialog/main.js'
 
+Vue.prototype.$Gmessage = message
 Vue.prototype.$Gmethods = Gmethods
 var echarts = require('echarts')
 Vue.prototype.$echarts = echarts
