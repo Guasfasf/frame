@@ -26,9 +26,13 @@
 > uploader
 1. 大文件分片上传，可以中断上传，重新上传，md5标识
 > End 2021.12.15
-> print
 1. 创建打印页面，并通过ref确定打印区域，通过class避开不打印区域
+> print
 > End 2021.12.20
 1. input和label配合使用，实现tab切换效果
 > 伪类Tab
 > End 2021.12.21
+1. express body-parser express-session
+> node serve
+> End 2021.12.24
+

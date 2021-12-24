@@ -113,6 +113,20 @@ export default {
           name: '伪类tab',
           path: '/tabWl',
           url: `../assets/logo.png`
+        },
+        {
+          name: 'Node',
+          path: 'Node',
+          children: [
+            {
+              name: '用户信息',
+              path: '/userInfo'
+            },
+            {
+              name: '图片数据',
+              path: '/Picture'
+            }
+          ]
         }
       ]
     }

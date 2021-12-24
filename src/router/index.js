@@ -18,6 +18,8 @@ import tableScroll from '../page/tableScroll'
 import listScroll from '../page/listScroll'
 import print from '../page/print'
 import tabWl from '../page/tabWl'
+import userinfo from '../page/node/userinfo'
+import Picture from '../page/node/picture'
 
 Vue.use(Router)
 
@@ -112,6 +114,16 @@ export default new Router({
           path: '/tabWl',
           name: 'tabWl',
           component: tabWl
+        },
+        {
+          path: '/userinfo',
+          name: 'userinfo',
+          component: userinfo
+        },
+        {
+          path: '/Picture',
+          name: 'Picture',
+          component: Picture
         }
       ]
     }
