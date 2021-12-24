@@ -37,7 +37,7 @@ export default {
   watch: {
     closed (newVal) {
       if (newVal) {
-        this.visible = false;
+        this.visible = false
         this.$el.addEventListener('transitionend', this.destroyElement)
       }
     }

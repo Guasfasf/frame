@@ -62,7 +62,6 @@ export default {
       }
     },
     handleScroll () {
-      console.log(window.pageYOffset > this.visibilityHeight);
       this.visible = window.pageYOffset > this.visibilityHeight
       this.debounce(this.test, 50, null)
     },
