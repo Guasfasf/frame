@@ -20,6 +20,7 @@ import print from '../page/print'
 import tabWl from '../page/tabWl'
 import userinfo from '../page/node/userinfo'
 import Picture from '../page/node/picture'
+import odometer from '../page/odometer'
 
 Vue.use(Router)
 
@@ -124,6 +125,11 @@ export default new Router({
           path: '/Picture',
           name: 'Picture',
           component: Picture
+        },
+        {
+          path: '/odometer',
+          name: 'odometer',
+          component: odometer
         }
       ]
     }

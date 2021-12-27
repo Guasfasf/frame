@@ -45,6 +45,11 @@ export default {
               name: '创建打印',
               path: '/print',
               url: `../assets/logo.png`
+            },
+            {
+              name: '文字切换',
+              path: '/odometer',
+              url: `../assets/logo.png`
             }
           ]
         },

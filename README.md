@@ -22,17 +22,23 @@
 13. SVG，svg生成迁徙线
 14. 自动滚动，表格滚动和普通列表滚动
 15. print，创建打印区域
-> End 2021.11.11
-> uploader
+> End
+---
 1. 大文件分片上传，可以中断上传，重新上传，md5标识
+> uploader
 > End 2021.12.15
+---
 1. 创建打印页面，并通过ref确定打印区域，通过class避开不打印区域
 > print
 > End 2021.12.20
+---
 1. input和label配合使用，实现tab切换效果
 > 伪类Tab
 > End 2021.12.21
+---
 1. nodeServe：express、body-parser、express-session
 2. 返回顶部backTop，提示语
 > End 2021.12.24
-
+---
+1. 文字加载效果，odometer、vue-odometer、vue-count-to
+> End 2021.12.27
