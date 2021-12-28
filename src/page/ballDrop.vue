@@ -3,7 +3,7 @@
     <!-- 列表数据 -->
     <ul class="shop">
       <li v-for="(item, index) in items" :key="index"  @click="additem">
-        <img src="../assets/logo.png" height="200" width="200"/>
+        <img src="../../static/img/logo.png" height="200" width="200"/>
         <span>{{item.text}}</span>
         <span>{{item.price}}</span>
       </li>

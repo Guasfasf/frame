@@ -75,32 +75,6 @@ export default {
           ]
         },
         {
-          name: 'API',
-          path: '/apiCall',
-          url: `../assets/logo.png`
-        },
-        {
-          name: '落球',
-          path: '/ballDrop',
-          url: `../assets/logo.png`
-        },
-        {
-          name: '传值',
-          path: '/brother',
-          url: `../assets/logo.png`
-        },
-
-        {
-          name: '图表',
-          path: '/echarts',
-          url: `../assets/logo.png`
-        },
-        {
-          name: 'SVG',
-          path: '/SVG',
-          url: `../assets/logo.png`
-        },
-        {
           name: '自动滚动',
           path: '自动滚动',
           children: [
@@ -115,11 +89,6 @@ export default {
           ]
         },
         {
-          name: '伪类tab',
-          path: '/tabWl',
-          url: `../assets/logo.png`
-        },
-        {
           name: 'Node',
           path: 'Node',
           children: [
@@ -132,6 +101,50 @@ export default {
               path: '/Picture'
             }
           ]
+        },
+        {
+          name: 'three3D',
+          path: 'three3D',
+          children: [
+            {
+              name: '种植vue',
+              path: '/tree'
+            },
+            {
+              name: '圆、方',
+              path: '/boxThree'
+            }
+          ]
+        },
+        {
+          name: 'API',
+          path: '/apiCall',
+          url: `../assets/logo.png`
+        },
+        {
+          name: '落球',
+          path: '/ballDrop',
+          url: `../assets/logo.png`
+        },
+        {
+          name: '传值',
+          path: '/brother',
+          url: `../assets/logo.png`
+        },
+        {
+          name: '图表',
+          path: '/echarts',
+          url: `../assets/logo.png`
+        },
+        {
+          name: 'SVG',
+          path: '/SVG',
+          url: `../assets/logo.png`
+        },
+        {
+          name: '伪类tab',
+          path: '/tabWl',
+          url: `../assets/logo.png`
         }
       ]
     }

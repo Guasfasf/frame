@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import camera from '../components/camera/index'
+import camera from '@/components/camera/index'
 
 export default {
   name: 'cameraCall',

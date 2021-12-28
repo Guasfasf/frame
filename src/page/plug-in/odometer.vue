@@ -21,7 +21,7 @@ export default {
     }
   },
   mounted () {
-    this.test()
+    // this.test()
   },
   methods: {
     test () {
@@ -46,7 +46,7 @@ export default {
   width: 30px;
   height: 35px;
   line-height: 35px;
-  border: 1px solid rgb(16, 169, 235);
+  /*border: 1px solid rgb(16, 169, 235);*/
   border-radius: 5px;
   margin: 0 4px;
 }

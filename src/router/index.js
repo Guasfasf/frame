@@ -1,26 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '../page/home'
-import dialogCall from '../page/dialogCall'
-import pictureCall from '../page/pictureCall'
-import cameraCall from '../page/cameraCall'
-import ScanningCall from '../page/ScanningCall'
-import AES from '../page/AES'
-import RSACall from '../page/RSACall'
-import DESCall from '../page/DESCall'
+import dialogCall from '../page/plug-in/dialogCall'
+import pictureCall from '../page/plug-in/pictureCall'
+import cameraCall from '../page/plug-in/cameraCall'
+import ScanningCall from '../page/plug-in/ScanningCall'
+import tinymce from '../page/plug-in/tinymce'
+import print from '../page/plug-in/print'
+import odometer from '../page/plug-in/odometer'
+
+import AES from '../page/secret/AES'
+import RSACall from '../page/secret/RSACall'
+import DESCall from '../page/secret/DESCall'
+
+import listScroll from '../page/roll/listScroll'
+import tableScroll from '../page/roll/tableScroll'
+
+import tree from '../page/three3D/tree'
+import boxThree from '../page/three3D/boxThree'
+
 import apiCall from '../page/apiCall'
 import ballDrop from '../page/ballDrop'
 import brother from '../page/brother'
-import tinymce from '../page/tinymce'
 import echarts from '../page/echarts'
 import svgMap from '../page/SVG/svgMap'
-import tableScroll from '../page/tableScroll'
-import listScroll from '../page/listScroll'
-import print from '../page/print'
 import tabWl from '../page/tabWl'
 import userinfo from '../page/node/userinfo'
 import Picture from '../page/node/picture'
-import odometer from '../page/odometer'
 
 Vue.use(Router)
 
@@ -130,6 +136,16 @@ export default new Router({
           path: '/odometer',
           name: 'odometer',
           component: odometer
+        },
+        {
+          path: '/tree',
+          name: 'tree',
+          component: tree
+        },
+        {
+          path: '/boxThree',
+          name: 'boxThree',
+          component: boxThree
         }
       ]
     }

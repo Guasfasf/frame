@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Gdialog from '../components/Gdialog/Gdialog'
+import Gdialog from '@/components/Gdialog/Gdialog'
 export default {
   data () {
     return {

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Cutting from '../components/Cutting/index'
+import Cutting from '@/components/Cutting/index'
 export default {
   name: 'pictureCall',
   components: {
