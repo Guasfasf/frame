@@ -40,4 +40,10 @@ export default {
     width: 100%;
     height: 100%;
   }
+  /deep/ .el-main{
+
+  }
+  .main{
+    width: calc(100% - 200px) !important;
+  }
 </style>

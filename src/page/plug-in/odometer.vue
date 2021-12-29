@@ -1,7 +1,8 @@
 <template>
   <div>
-    <IOdometer class="iOdometer" :value="num"/>
+    <IOdometer id="iOdometer" class="iOdometer" :value="num"/>
     <div style="width: 100px;height: 100px;"><count-to :val="num" /></div>
+    <button @click="handTest">点击改变样式</button>
   </div>
 </template>
 
@@ -24,6 +25,12 @@ export default {
     // this.test()
   },
   methods: {
+    handTest () {
+      const id = document.getElementById('iOdometer')
+      const digit = id.getElementsByClassName('odometer-digit')
+      console.log(digit)
+      digit[0].style = 'border: 1px solid red;'
+    },
     test () {
       const that = this
       setInterval(function () {
