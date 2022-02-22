@@ -12,7 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'https://www.baidu.com',
+        // target: 'https://www.baidu.com',
+        target: 'https://www.isqqw.com',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

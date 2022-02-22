@@ -11,15 +11,23 @@
       <label class="test" for="tab-toggle"></label>
     </div>
     <div :class="{'div': value}">{{ value }}</div>
+    <button @click="status = true">按钮点击</button>
+    <test :visible.sync="status" :testtext.sync="testtext"></test>
   </div>
 </template>
 
 <script>
+import test from './test'
 export default {
   name: 'tabWl',
+  components: {
+    test
+  },
   data () {
     return {
-      value: false
+      value: false,
+      status: false,
+      testtext: '22'
     }
   },
   methods: {

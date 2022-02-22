@@ -1,8 +1,11 @@
 <template>
   <div>
-    <IOdometer id="iOdometer" class="iOdometer" :value="num"/>
-    <div style="width: 100px;height: 100px;"><count-to :val="num" /></div>
+    {{format}}
+    <IOdometer ref="test" v-if="status" id="iOdometer" class="iOdometer" :value="num" :format="format"/>
+    <div style="width: 100px;height: 100px;"><count-to :val="num"/></div>
     <button @click="handTest">点击改变样式</button>
+    <button @click="test">点击+1</button>
+    <button @click="testformat">点击改变format</button>
   </div>
 </template>
 
@@ -18,7 +21,9 @@ export default {
   },
   data () {
     return {
-      num: 999999
+      num: 999.90,
+      format: '(,ddd).dd',
+      status: true
     }
   },
   mounted () {
@@ -33,9 +38,18 @@ export default {
     },
     test () {
       const that = this
-      setInterval(function () {
-        that.num += 1
-      }, 5000)
+      that.num += 1
+      // setInterval(function () {
+      //   that.num += 1
+      // }, 5000)
+    },
+    testformat () {
+      setTimeout(() => {
+        this.format = '(,ddd)'
+        this.num = 998.8
+        // console.log(this.$refs.test)
+        this.$refs.test.instance.update(this.num)
+      })
     }
   }
 }

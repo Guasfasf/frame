@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="g">
+</div>
+<script>
+  const g = document.getElementById("g");
+  for(var i = 0; i < 5; i++) {
+    let spanDom = document.createElement('span')
+    spanDom.innerHTML = `<span>${i}</span>`
+    g.appendChild(spanDom)
+  }
+  const b = g.cloneNode(true)
+  document.body.append(b)
+</script>
+</body>
+</html>
