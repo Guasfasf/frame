@@ -5,9 +5,15 @@
   <title>Title</title>
   <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
 </head>
+
 <body>
+
+<input type="text" id="url" value="https://www.isqqw.com/asset/get/s/data-1482909771696-ByVIdJWBx.json">
+<button onclick="search()">java-jar查询</button>
+<div class="showmsg"></div>
 <div id="g">
 </div>
+
 <script>
   const g = document.getElementById("g");
   for(var i = 0; i < 5; i++) {
@@ -17,6 +23,26 @@
   }
   const b = g.cloneNode(true)
   document.body.append(b)
+  // 跨域访问接口 需要jar配合
+  function search() {
+    const url = document.getElementById("url");
+    var params = {
+      url: url.value,
+      method: 'get'
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST",'http://localhost:5418/zt-http-request/send/api');
+    xhr.setRequestHeader("Content-Type","application/json");
+    xhr.send(JSON.stringify(params));
+    xhr.onreadystatechange = function(){
+      // 判断服务器是否响应，判断异步对象的响应状态
+      if(xhr.status == 200 && xhr.readyState == 4){
+        document.querySelector(".showmsg").innerHTML = xhr.responseText;
+      }
+    }
+  }
+
+
 </script>
 </body>
 </html>

@@ -24,6 +24,7 @@
     "js-cookie": "^2.2.1",
     "jsencrypt": "^3.0.0-rc.1",
     "odometer": "^0.4.8",
+    "qiankun": "^2.7.0",
     "spark-md5": "^3.0.2",
     "three": "^0.128.0",
     "vue": "^2.5.2",

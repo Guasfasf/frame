@@ -1,0 +1,5 @@
+.tabflow{width: 100%;height: 17vh;overflow: auto;}
+.tabflow table{font-size: 0.14rem;color: #5a5a5a; width: 100%;}
+.tabflow table tr{text-align: center;line-height: 0.25rem;border: 1px solid #f2f2f2;border-right: none;}
+.tabflow table thead{background-color: #fff;height: 20px;}
+.tabflow table tbody tr:nth-child(2n+1){background-color: #f2f2f2;}

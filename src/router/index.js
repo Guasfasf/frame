@@ -31,7 +31,16 @@ import Picture from '../page/node/picture'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
+    {
+      path: '/glf',
+      name: 'glf'
+    },
+    {
+      path: '/about',
+      name: 'about'
+    },
     {
       path: '/',
       name: 'home',

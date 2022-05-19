@@ -85,5 +85,24 @@ export default {
     })
 
     return decrypted.toString(CryptoJS.enc.Utf8)
+  },
+  // webstock
+  webstockInit: (url) => {
+    var ws = new WebSocket(url)
+
+    ws.onopen = function (evt) {
+      console.log('Connection open 连接成功 ...')
+      ws.send('Hello WebSockets!')
+    }
+
+    ws.onmessage = function (evt) {
+      console.log('Received Message: ' + evt.data)
+    }
+
+    // ws.onclose = function(evt) {
+    //   console.log('Connection closed.')
+    //   ws.close()
+    // }
+    return ws
   }
 }

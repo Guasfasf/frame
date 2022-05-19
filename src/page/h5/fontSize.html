@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <style>
+    body{font-family: "黑体-简","微软雅黑";}
+  </style>
+  <link rel="stylesheet" type="text/css" href="table.css"/>
+  <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+  <script src="util.js"></script>
+  <script>
+
+
+    // 模拟数据
+    var list = [
+      {
+        Id: 1,
+        Name: "张三",
+        Sex: "男",
+        Age: "21岁",
+        College: "数学学院",
+        Address: "腾讯",
+        selectArr: [
+          {
+            value: '男',
+            id: 1
+          },
+          {
+            value: '女',
+            id: 2
+          }
+        ]
+      },
+      {
+        Id: 2,
+        Name: "李四",
+        Sex: "女",
+        Age: "21岁",
+        College: "数学学院",
+        Address: "百度",
+        selectArr: [
+          {
+            value: '男',
+            id: 1
+          },
+          {
+            value: '女',
+            id: 2
+          }
+        ]
+      },
+      {
+        Id: 3,
+        Name: "李四",
+        Sex: "女",
+        Age: "21岁",
+        College: "数学学院",
+        Address: "百度",
+        selectArr: [
+          {
+            value: '男',
+            id: 1
+          },
+          {
+            value: '女',
+            id: 2
+          }
+        ]
+      },
+      {
+        Id: 4,
+        Name: "李四",
+        Sex: "女",
+        Age: "21岁",
+        College: "数学学院",
+        Address: "百度",
+        selectArr: [
+          {
+            value: '男',
+            id: 1
+          },
+          {
+            value: '女',
+            id: 2
+          }
+        ]
+      },
+      {
+        Id: 5,
+        Name: "李四",
+        Sex: "女",
+        Age: "21岁",
+        College: "数学学院",
+        Address: "百度",
+        selectArr: [
+          {
+            value: '男',
+            id: 1
+          },
+          {
+            value: '女',
+            id: 2
+          }
+        ]
+      },
+      {
+        Id: 6,
+        Name: "李四",
+        Sex: "女",
+        Age: "21岁",
+        College: "数学学院",
+        Address: "百度",
+        selectArr: [
+          {
+            value: '男',
+            id: 1
+          },
+          {
+            value: '女',
+            id: 2
+          }
+        ]
+      },
+      {
+        Id: 7,
+        Name: "李四",
+        Sex: "女",
+        Age: "21岁",
+        College: "数学学院",
+        Address: "百度",
+        selectArr: [
+          {
+            value: '男',
+            id: 1
+          },
+          {
+            value: '女',
+            id: 2
+          }
+        ]
+      }
+    ];
+    // 回退
+    function back () {
+      var arr = JSON.parse(localStorage.getItem("step")) || [];
+      if (arr.length === 0) {
+        return console.log('没有可操作回退记录');
+      }
+      var arrBack = arr.filter(e => {
+        return !e.isBack
+      })
+      if (arrBack.length === 0) {
+        return console.log('没有可操作回退记录');
+      }
+      var stepItem = arrBack[arrBack.length - 1];
+      if (stepItem.modifyType === 'index') {
+        if (stepItem.modifyValueNew > stepItem.modifyValueOld) {
+          tops(stepItem.modifyValueNew, false)
+        } else {
+          bottom(stepItem.modifyValueNew, false)
+        }
+      } else if (stepItem.modifyType === 'Sex') {
+        for (var i = 0; i<list.length; i++) {
+          if (list[i].Id === stepItem.id) {
+            list[i].Sex = stepItem.modifyValueOld
+            break
+          }
+        }
+        LoadList(list)
+      }
+      modifyBackStepLocal()
+    }
+    // 前进
+    function next () {
+      var arr = JSON.parse(localStorage.getItem("step")) || [];
+      if (arr.length === 0) {
+        return console.log('没有可操作前进记录');
+      }
+      var backArr = arr.filter(e => {
+        return e.isBack
+      })
+      if (backArr.length === 0) {
+        return console.log('没有可操作前进记录');
+      }
+      var stepItem = backArr[0];
+      if (stepItem.modifyType === 'index') {
+        if (stepItem.modifyValueNew > stepItem.modifyValueOld) {
+          tops(stepItem.modifyValueNew, false)
+        } else {
+          bottom(stepItem.modifyValueNew, false)
+        }
+      } else if (stepItem.modifyType === 'Sex') {
+        for(var i=list.length-1;i>=0;i--) {
+          if (!list[i].isBack && list[i].Id === stepItem.id) {
+            list[i].isBack = true
+            list[i].Sex = stepItem.modifyValueNew
+            break
+          }
+        }
+        LoadList(list)
+      }
+      modifyStepLocal()
+
+    }
+    // 上移
+    function tops (index, status = true) {
+      if (index === 0) return
+      var update = list[index - 1];
+      list.splice(index - 1, 1);
+      list.splice(index, 0, update)
+
+      var arr = JSON.parse(localStorage.getItem("step")) || [];
+      var step = arr.filter(e => {
+        return !e.isBack
+      })
+      var params = {
+        id: list[index].Id,
+        step: step.length + 1,
+        modifyType: 'index',
+        modifyValueOld: index,
+        modifyValueNew: index - 1,
+        isBack: false
+      }
+      if (status) {
+        setLocal(params)
+      }
+
+      LoadList(list);
+    }
+    // 下移
+    function bottom (index, status = true) {
+      if (index+1 === list.length) return
+      var update = list[index + 1];
+      list.splice(index + 1, 1);
+      list.splice(index, 0, update)
+
+      var arr = JSON.parse(localStorage.getItem("step")) || [];
+      var step = arr.filter(e => {
+        return !e.isBack
+      })
+      var params = {
+        id: list[index].Id,
+        step: step.length + 1,
+        modifyType: 'index',
+        modifyValueOld: index,
+        modifyValueNew: index + 1,
+        isBack: false
+      }
+      if (status) {
+        setLocal(params)
+      }
+
+      LoadList(list);
+    }
+    // 下拉选择
+    function selectChange (e, index, status = true) {
+      console.log(e.value);
+      var oldValue = JSON.parse(JSON.stringify(list[index].Sex))
+      list[index].Sex = e.value;
+
+      var arr = JSON.parse(localStorage.getItem("step")) || [];
+      var step = arr.filter(e => {
+        return !e.isBack
+      })
+      var params = {
+        id: list[index].Id,
+        step: step.length + 1,
+        modifyType: 'Sex',
+        modifyValueOld: oldValue,
+        modifyValueNew: e.value,
+        isBack: false
+      }
+      if (status) {
+        setLocal(params)
+      }
+    }
+
+
+
+    // 加载dom
+    function LoadList(list) {
+      // 获取tbody对象
+      var tbody = $("#tbody");
+      // 清空子元素
+      tbody.children().remove();
+      var html = "";
+      // 遍历数据源
+      list.forEach(function(e, index) {
+        var slectId = "select" + index;
+        var selectHtml = ''
+        e.selectArr.forEach(select => {
+          if (e.Sex === select.value) {
+            selectHtml += "<option value="+select.value+" selected>"+select.value+"</option>"
+          } else {
+            selectHtml += "<option value="+select.value+" >"+select.value+"</option>"
+          }
+        })
+        var select = "<select id="+slectId+" onchange=\"selectChange("+slectId+','+index+")\">" +
+          selectHtml +
+          "</select>";
+        var btn = "<button onclick=\"tops("+index+")\">上</button>\n" +
+          "<button onclick=\"bottom("+index+")\">下</button>";
+        html += "<tr>";
+        html += "<td hidden='hidden'>" + e["Id"] + "</td>"
+        html += "<td>" + e["Name"] + "</td>"
+        html += "<td>" + select + "</td>"
+        html += "<td>" + e["Age"] + "</td>"
+        html += "<td>" + btn + "</td>"
+        html += "<td>" + e.Address+ "</td>"
+        html += "</tr>";
+      });
+      // 绑定到tbody中去;
+      tbody.append(html);
+    }
+    setTimeout(() => {
+      localStorage.removeItem('step')
+      LoadList(list);
+      initScroll('#flowtable-cont')
+    })
+
+  </script>
+</head>
+<body>
+<button onclick="next()">前进</button>
+<button onclick="back()">后退</button>
+<button onclick="scrollTopHeight(50)">滚动至50的高度</button>
+<button onclick="scrollTopHeight(80)">滚动至80的高度</button>
+<a href='#btn'>锚</a>
+<div class="tabflow" id="flowtable-cont">
+  <table border="1px" cellspacing="0" cellpadding="0" style="width: 100%;height: 30px;">
+    <thead>
+    <tr>
+      <th hidden="hidden"></th>
+      <th width="100">姓名</th>
+      <th width="100">性别</th>
+      <th width="100">年龄</th>
+      <th width="200">学院</th>
+      <th width="220">地址</th>
+    </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+  </table>
+
+</div>
+<div style='width:100%;background:#ddd'>
+
+  <p style="font-size:1px">font-size:1px，这是1号字体</p>
+  <p style="font-size:2px">font-size:2px，这是2号字体</p>
+  <p style="font-size:3px">font-size:3px，这是3号字体</p>
+  <p style="font-size:4px">font-size:4px，这是4号字体</p>
+  <p style="font-size:5px">font-size:5px，这是5号字体</p>
+  <p style="font-size:6px">font-size:6px，这是6号字体</p>
+  <p style="font-size:7px">font-size:7px，这是7号字体</p>
+  <p style="font-size:8px">font-size:8px，这是8号字体</p>
+  <p style="font-size:9px">font-size:9px，这是9号字体</p>
+  <p style="font-size:10px">font-size:10px，这是10号字体</p>
+  <p style="font-size:11px">font-size:11px，这是11号字体</p>
+  <p style="font-size:12px">font-size:12px，这是12号字体</p>
+  <p style="font-size:13px">font-size:13px，这是13号字体</p>
+  <p style="font-size:14px">font-size:14px，这是14号字体</p>
+  <p style="font-size:15px">font-size:15px，这是15号字体</p>
+  <p style="font-size:16px">font-size:16px，这是16号字体</p>
+  <p style="font-size:17px">font-size:17px，这是17号字体</p>
+  <p style="font-size:18px">font-size:18px，这是18号字体</p>
+  <p style="font-size:19px">font-size:19px，这是19号字体</p>
+  <p style="font-size:20px">font-size:20px，这是20号字体</p>
+  <p style="font-size:21px">font-size:21px，这是21号字体</p>
+  <p style="font-size:22px">font-size:22px，这是22号字体</p>
+  <p style="font-size:23px">font-size:23px，这是23号字体</p>
+  <p style="font-size:24px">font-size:24px，这是24号字体</p>
+  <p style="font-size:25px">font-size:25px，这是25号字体</p>
+  <p style="font-size:26px">font-size:26px，这是26号字体</p>
+  <p style="font-size:27px">font-size:27px，这是27号字体</p>
+  <p style="font-size:28px">font-size:28px，这是28号字体</p>
+  <p style="font-size:29px">font-size:29px，这是29号字体</p>
+  <p style="font-size:30px">font-size:30px，这是30号字体</p>
+  <p style="font-size:31px">font-size:31px，这是31号字体</p>
+  <p style="font-size:32px">font-size:32px，这是32号字体</p>
+  <p style="font-size:33px">font-size:33px，这是33号字体</p>
+  <p style="font-size:34px">font-size:34px，这是34号字体</p>
+  <p style="font-size:35px">font-size:35px，这是35号字体</p>
+  <p style="font-size:36px">font-size:36px，这是36号字体</p>
+  <p>结论：移动端最小字体为12px（仅chrome有此限制），建议最小使用12px；
+    如果设计稿中有小于12px的字体，按实际字号写css样式；
+
+    结论2：   iphone类移动设备不受最小字号限制；
+    其它设备可能会受8px限制；
+    chrome中限制最小12px。</p>
+</div>
+<a id='btn'>点</a>
+
+</body>
+</html>

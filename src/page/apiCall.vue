@@ -1,7 +1,10 @@
 <template>
   <div>
-    <button @click="login">调用api</button>
-    <button @click="down">代理跨域批量下载</button>
+    <button @click='login'>调用api</button>
+    <button @click='down'>代理跨域批量下载</button>
+
+    <button @click='send'>webstocket send</button>
+    <button @click='close'>webstocket close</button>
   </div>
 </template>
 
@@ -13,6 +16,7 @@ export default {
   name: 'apiCall',
   data () {
     return {
+      path: 'ws://121.40.165.18:8800',
       area: [
         // {'name': '上海', 'url': '/asset/get/s/data-1482909900836-H1BC_1WHg.json'},
         // {'name': '河北', 'url': '/asset/get/s/data-1482909799572-Hkgu_yWSg.json'},
@@ -50,10 +54,45 @@ export default {
         {'name': '重庆', 'url': '/asset/get/s/data-1482909775470-HJDIdk-Se.json'},
         {'name': '香港', 'url': '/asset/get/s/data-1461584707906-r1hSmtsx.json'},
         {'name': '澳门', 'url': '/asset/get/s/data-1482909771696-ByVIdJWBx.json'}
-      ]
+      ],
+      ws: null
     }
   },
+  created () {
+    // this.init()
+  },
   methods: {
+    init () {
+      if (typeof (WebSocket) === 'undefined') {
+        alert('您的浏览器不支持socket')
+      } else {
+        // 实例化socket
+        this.socket = new WebSocket(this.path)
+        // 监听socket连接
+        this.socket.onopen = this.open
+        // 监听socket错误信息
+        this.socket.onerror = this.error
+        // 监听socket消息
+        this.socket.onmessage = this.getMessage
+      }
+    },
+    open () {
+      console.log('socket连接成功')
+    },
+    error () {
+      console.log('连接错误')
+    },
+    getMessage (msg) {
+      console.log(msg.data)
+    },
+    send () {
+      this.socket.send(this.path)
+      // this.ws = this.$Gmethods.webstockInit(this.path)
+    },
+    close () {
+      console.log('socket已经关闭')
+      this.ws.close()
+    },
     login () {
       // this.$store
       let params = {}
@@ -83,6 +122,10 @@ export default {
         })
       })
     }
+  },
+  destroyed () {
+    // 销毁监听
+    this.socket.onclose = this.close
   }
 }
 </script>

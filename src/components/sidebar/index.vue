@@ -9,6 +9,19 @@
     <el-main class="main">
       <div v-if="$route.path === '/'" style="height: 100%;overflow: auto;">
         <h1>hello word</h1>
+        <div id="glf">
+          template:
+          <!--    <test-demo level="11">-->
+          <!--    </test-demo>\-->
+          <!--    <test></test>-->
+          render:
+          <test-demo level=1>
+            <p>Alley1</p>
+          </test-demo>
+          <test-demo level=2>
+            <p>Alley2</p>
+          </test-demo>
+        </div>
         <div style="height: 1000px;background: #1ACEFF;"></div>
       </div>
       <router-view style="height: 100%;overflow: auto;"></router-view>
@@ -18,10 +31,12 @@
 
 <script>
 import sidebarItem from './sidebar-item'
+import { test } from './render'
 export default {
   name: 'home',
   components: {
-    sidebarItem
+    sidebarItem,
+    test
   },
   data () {
     return {
