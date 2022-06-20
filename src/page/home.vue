@@ -117,6 +117,16 @@ export default {
           ]
         },
         {
+          name: 'autoTable',
+          path: 'autoTable',
+          children: [
+            {
+              name: 'ele生成表格',
+              path: '/autoTable'
+            }
+          ]
+        },
+        {
           name: 'API',
           path: '/apiCall',
           url: `../assets/logo.png`

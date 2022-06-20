@@ -28,6 +28,8 @@ import tabWl from '../page/tabWl'
 import userinfo from '../page/node/userinfo'
 import Picture from '../page/node/picture'
 
+import autoTable from '../page/autoGenerate/ele-table'
+
 Vue.use(Router)
 
 export default new Router({
@@ -155,6 +157,11 @@ export default new Router({
           path: '/boxThree',
           name: 'boxThree',
           component: boxThree
+        },
+        {
+          path: '/autoTable',
+          name: 'autoTable',
+          component: autoTable
         }
       ]
     }

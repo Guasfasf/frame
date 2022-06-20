@@ -2,12 +2,12 @@
   <el-container class="container">
     <el-menu
         router
-        style="width:200px;height: 100%;"
+        style="width:200px;height: 100vh;overflow: auto;"
     >
       <sidebar-item :menus="menus"></sidebar-item>
     </el-menu>
     <el-main class="main">
-      <div v-if="$route.path === '/'" style="height: 100%;overflow: auto;">
+      <div v-if="$route.path === '/'">
         <h1>hello word</h1>
         <div id="glf">
           template:
@@ -60,5 +60,7 @@ export default {
   }
   .main{
     width: calc(100% - 200px) !important;
+    height: 95vh;
+    overflow: auto;
   }
 </style>
