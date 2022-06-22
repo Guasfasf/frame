@@ -14,7 +14,15 @@
         :label="item.label"
         style="width: 300px;"
       >
-        <el-input v-model="searchForm[item.value]"></el-input>
+        <el-input v-if="item.type === 'input'" v-model="searchForm[item.value]"></el-input>
+        <el-select v-if="item.type === 'select'" v-model="searchForm[item.value]" placeholder="请选择">
+          <el-option
+            v-for="item in item.selectOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitSearch('searchForm')">搜索</el-button>
@@ -42,6 +50,16 @@
         :prop="title.value"
         :label="title.label"
       >
+        <template slot-scope="scope">
+          <div v-if="typeof scope.row[title.value] === 'string'">
+            {{ scope.row[title.value] }}
+          </div>
+          <div v-if="scope.row[title.value].slotText && scope.row[title.value].slotText"
+               v-html="scope.row[title.value].slotText"></div>
+          <div v-if="scope.row[title.value].slotText && !scope.row[title.value].slotText" >
+            {{ scope.row[title.value].default }}
+          </div>
+        </template>
       </el-table-column>
 
       <el-table-column
@@ -78,7 +96,15 @@
           :label="item.label"
           style="width: 300px;"
         >
-          <el-input v-model="dialogForm[item.value]" :disabled="disStatus"></el-input>
+          <el-input v-if="item.type === 'input'" v-model="dialogForm[item.value]" :disabled="disStatus"></el-input>
+          <el-select v-if="item.type === 'select'" v-model="dialogForm[item.value]" placeholder="请选择">
+            <el-option
+              v-for="item in item.selectOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
         </el-form-item>
       </el-form>
 
@@ -109,11 +135,17 @@ export default {
       tableData: [
         {
           name: 'glf',
-          sex: '1'
+          sex: {
+            default: 1,
+            slotText: '男'
+          }
         },
         {
           name: 'test',
-          sex: '女'
+          sex: {
+            default: 2,
+            slotText: `<span style="color: red;">女</span>`
+          }
         }
       ]
     }
@@ -130,8 +162,11 @@ export default {
             this.tableData.push(this.dialogForm)
           }
           if (this.tableTitle === '编辑') {
-            this.tableData[this.modifyIndex].name = this.dialogForm.name
+            for (const dialogFormKey in this.dialogForm) {
+              this.tableData[this.modifyIndex][dialogFormKey] = this.dialogForm[dialogFormKey]
+            }
           }
+          this.tableDialog = false
         } else {
           console.log('error submit!!')
           return false
@@ -212,7 +247,6 @@ export default {
      * @param formName
      */
     submitSearch (formName) {
-      // todo
       var params = {
         ...this.searchForm,
         currentPage: this.currentConfig.currentPage,
@@ -233,6 +267,7 @@ export default {
         {
           label: '姓名',
           value: 'name',
+          type: 'input',
           search: true,
           add: true,
           modify: true
@@ -240,9 +275,19 @@ export default {
         {
           label: '性别',
           value: 'sex',
-          search: false,
+          type: 'select',
+          search: true,
           add: true,
-          modify: false
+          modify: true,
+          selectOptions: [
+            {
+              value: '男',
+              label: '男'
+            }, {
+              value: '女',
+              label: '女'
+            }
+          ]
         }
       ]
       return arr
