@@ -2,17 +2,27 @@
   <div>
     <brother></brother>
     <younger></younger>
+    <button @click="qiankun">test</button>
+    <div id="glf" style="width: 500px;height: 100px;border: 1px solid red;overflow: auto;"></div>
+    <iframe :src="iframeSrc" frameborder="0" style="width: 90%;height: 100px;border:1px solid red;">
+      <div id="test-glf">
+        测试
+      </div>
+    </iframe>
+    <div id="vue" style="width: 500px;height: 100px;border: 1px solid red;overflow: auto;"></div>
   </div>
 </template>
 
 <script>
 import brother from '../components/brother'
 import younger from '../components/younger'
+import { loadMicroApp } from 'qiankun'
 export default {
   name: 'brothers',
   data () {
     return {
-      test: 'glf'
+      test: 'glf',
+      iframeSrc: 'http://localhost:10000'
     }
   },
   provide () {
@@ -36,6 +46,13 @@ export default {
     /* bus.js 兄弟组件传值方法 */
     bus (item) {
       console.log('brothers ===', item)
+    },
+    qiankun () {
+      loadMicroApp({
+        name: 'vueApp', // 应用的名字
+        entry: 'http://localhost:10000/', // 默认加载这个html，解析里面的js动态的执行（子应用必须支持跨域，内部使用的是 fetch）
+        container: '#glf' // 要渲染到的容器名id
+      })
     }
   }
 }

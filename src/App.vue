@@ -1,6 +1,6 @@
 
 <template>
-  <div id="app">
+  <div>
     <router-view/>
     <global-uploader></global-uploader>
     <back-to-top

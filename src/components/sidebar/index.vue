@@ -8,7 +8,7 @@
     </el-menu>
     <el-main class="main">
       <div v-if="$route.path === '/'">
-        <h1>hello word</h1>
+        <h1 @click="test">hello word</h1>
         <div id="glf">
           template:
           <!--    <test-demo level="11">-->
@@ -45,6 +45,16 @@ export default {
   props: {
     menus: {
       type: Array
+    }
+  },
+  methods: {
+    test () {
+      this.$router.push({
+        path: '/tabWl',
+        query: {
+          id: 123
+        }
+      })
     }
   }
 }

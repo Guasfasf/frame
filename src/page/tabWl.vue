@@ -30,6 +30,9 @@ export default {
       testtext: '22'
     }
   },
+  created () {
+    alert(JSON.stringify(this.$route.query))
+  },
   methods: {
     test () {
       var a = document.getElementById('tab-toggle')

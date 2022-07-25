@@ -18,10 +18,10 @@ import { registerMicroApps, start } from 'qiankun'
 
 registerMicroApps([
   {
-    name: 'glf-vue',
-    entry: '//localhost:7105',
-    container: '#app',
-    activeRule: '/glf'
+    name: 'vueApp', // 应用的名字
+    entry: 'http://localhost:10000/', // 默认加载这个html，解析里面的js动态的执行（子应用必须支持跨域，内部使用的是 fetch）
+    container: '#vue', // 要渲染到的容器名id
+    activeRule: '#/brother' // 通过哪一个路由来激活
   }
 ])
 // 启动 qiankun
