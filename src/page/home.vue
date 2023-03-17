@@ -13,6 +13,11 @@ export default {
     return {
       menus: [
         {
+          name: 'test',
+          path: '/test',
+          url: `../assets/logo.png`
+        },
+        {
           name: '插件',
           path: '插件',
           children: [

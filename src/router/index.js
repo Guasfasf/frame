@@ -30,6 +30,8 @@ import Picture from '../page/node/picture'
 
 import autoTable from '../page/autoGenerate/ele-table'
 
+import test from '../page/test'
+
 Vue.use(Router)
 
 export default new Router({
@@ -155,6 +157,11 @@ export default new Router({
           path: '/autoTable',
           name: 'autoTable',
           component: autoTable
+        },
+        {
+          path: '/test',
+          name: 'test',
+          component: test
         }
       ]
     }

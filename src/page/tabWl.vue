@@ -12,16 +12,16 @@
     </div>
     <div :class="{'div': value}">{{ value }}</div>
     <button @click="status = true">按钮点击</button>
-    <test :visible.sync="status" :testtext.sync="testtext"></test>
+    <updateSync :visible.sync="status" :testtext.sync="testtext"></updateSync>
   </div>
 </template>
 
 <script>
-import test from './test'
+import updateSync from './updateSync'
 export default {
   name: 'tabWl',
   components: {
-    test
+    updateSync
   },
   data () {
     return {
@@ -31,7 +31,7 @@ export default {
     }
   },
   created () {
-    alert(JSON.stringify(this.$route.query))
+    // alert(JSON.stringify(this.$route.query))
   },
   methods: {
     test () {
